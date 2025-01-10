@@ -9,6 +9,6 @@
         "forceConsistentCasingInFileNames": true,
         "sourceMap": true
     },
-    "include": ["src/**/*", "raw/getCaptcha.ts", "raw/app.ts"],
+    "include": ["src/**/*"],
     "exclude": ["node_modules"]
 }
