@@ -1,0 +1,17 @@
+{
+    "name": "node-auth-app-ts",
+    "version": "1.0.0",
+    "description": "Node.js app for login automation with Puppeteer and CAPTCHA solving via rucaptcha.com",
+    "main": "",
+    "scripts": {
+        "build": "tsc",
+        "start": "npx ts-node src/main.ts"
+    },
+    "dependencies": {
+        "@2captcha/captcha-solver": "^1.3.0",
+        "@types/node": "^22.10.5",
+        "puppeteer": "^24.0.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.3"
+    }
+}
