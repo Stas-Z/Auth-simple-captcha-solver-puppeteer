@@ -12,7 +12,7 @@ interface ISelectors {
 }
 interface IConfig {
     loginUrl: string;
-    selector: ISelectors;
+    selectors: ISelectors;
     userData: IUserData;
     attempts: number;
     rucaptchaKey: string;
@@ -20,7 +20,7 @@ interface IConfig {
 
 export const config: IConfig = {
     loginUrl: 'http://localhost:8080/auth', // Укажите URL страницы авторизации
-    selector: {
+    selectors: {
         email: '#basic_email', // Селектор для инпута email
         password: '#basic_password', // Селектор для инпута пароля
         captchaSvg: '.captcha > div > svg', // Селектор для картинки капчи

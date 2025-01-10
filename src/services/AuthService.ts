@@ -9,19 +9,27 @@ export class AuthService {
     constructor(private captchaSolver: CaptchaSolver) {}
 
     public async login(): Promise<void> {
-        this.browser = await puppeteer.launch({ headless: false });
+        this.browser = await puppeteer.launch({
+            headless: false,
+            defaultViewport: {
+                width: 0,
+                height: 0,
+                deviceScaleFactor: 4,
+            },
+        });
         this.page = await this.browser.newPage();
 
         try {
             await this.page.goto(config.loginUrl);
-            await this.page.type(config.selector.email, config.userData.email);
+            console.log('Зашли на страницу авторизации.');
+            await this.page.type(config.selectors.email, config.userData.email);
             await this.page.type(
-                config.selector.password,
+                config.selectors.password,
                 config.userData.password
             );
 
             const captchaElement = await this.page.waitForSelector(
-                config.selector.captchaSvg
+                config.selectors.captchaSvg
             );
 
             if (captchaElement) {
@@ -46,19 +54,19 @@ export class AuthService {
                                 selector
                             ) as HTMLInputElement;
                             if (input) input.value = '';
-                        }, config.selector.captchaInput);
+                        }, config.selectors.captchaInput);
 
                         if (ruCaptchaReq) {
                             await this.page.type(
-                                config.selector.captchaInput,
+                                config.selectors.captchaInput,
                                 ruCaptchaReq.data
                             );
                         }
 
-                        await this.page.click(config.selector.buttonVerify);
+                        await this.page.click(config.selectors.buttonVerify);
 
                         await this.page.waitForSelector(
-                            config.selector.succesMessage,
+                            config.selectors.succesMessage,
                             {
                                 timeout: 1500,
                             }

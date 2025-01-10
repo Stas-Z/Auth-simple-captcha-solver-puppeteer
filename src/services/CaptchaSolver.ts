@@ -1,5 +1,5 @@
 import * as TwoCaptcha from '@2captcha/captcha-solver';
-import { readFileAsBase64 } from '../utils/file.util';
+import { readFileAsBase64 } from '../utils/fileUtil';
 
 export class CaptchaSolver {
     private solver: TwoCaptcha.Solver;
